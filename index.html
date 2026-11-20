@@ -356,11 +356,131 @@
 
         .service-link:hover { text-decoration: underline; }
 
-        /* PERCHÉ SCEGLIERCI */
-        .trust-band {
+        /* CAROSELLO LAVORI & ANNUNCI */
+        .carousel-band {
             background: var(--bg-alt);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
+        }
+
+        .carousel-wrapper {
+            position: relative;
+        }
+
+        .carousel-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(280px, calc(33.333% - 14px));
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-track { grid-auto-columns: minmax(270px, calc(50% - 10px)); }
+        }
+
+        @media (max-width: 600px) {
+            .carousel-track { grid-auto-columns: 88%; }
+        }
+
+        .lavoro-card {
+            scroll-snap-align: start;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .lavoro-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--cyan);
+        }
+
+        .lavoro-img-box {
+            width: 100%;
+            height: 200px;
+            background: #08121c;
+            overflow: hidden;
+        }
+
+        .lavoro-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .lavoro-body {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 8px;
+        }
+
+        .lavoro-body h3 {
+            font-size: 1.08rem;
+            font-weight: 700;
+        }
+
+        .lavoro-body p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            flex: 1;
+        }
+
+        .lavoro-btn {
+            margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        .lavoro-btn:hover {
+            background: var(--accent);
+            color: #03150e;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .carousel-btn {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .carousel-btn:hover {
+            border-color: var(--cyan);
+            background: var(--card-hover);
+        }
+
+        /* PERCHÉ SCEGLIERCI */
+        .trust-band {
+            background: var(--bg);
         }
 
         .trust-grid {
@@ -485,6 +605,7 @@
             </a>
             <div class="nav-links">
                 <a href="#servizi">Servizi</a>
+                <a href="#lavori-vetrina">Lavori &amp; Annunci</a>
                 <a href="#garanzie">Perché noi</a>
                 <a href="#contatti">Preventivo</a>
                 <a class="btn-wa-nav" href="https://wa.me/393505911718?text=Ciao%20MobiLab!%20Vorrei%20un'informazione." target="_blank" rel="noopener">
@@ -510,7 +631,7 @@
                     <a class="btn-ebay" href="https://www.ebay.it/usr/mobilab-ita" target="_blank" rel="noopener">
                         🛒 Store eBay
                     </a>
-                    <a class="btn-secondary" href="#servizi">Scopri i servizi</a>
+                    <a class="btn-secondary" href="#lavori-vetrina">Vedi lavori</a>
                 </div>
             </div>
 
@@ -560,6 +681,26 @@
                     <h3>Ritiro &amp; Permuta Usato</h3>
                     <p>Hai un dispositivo vecchio o con schermo/batteria da sistemare? Valutiamo il tuo usato per acquisto diretto o permuta.</p>
                     <a class="service-link" href="https://wa.me/393505911718?text=Ciao%20MobiLab!%20Vorrei%20far%20valutare%20un%20dispositivo%20usato." target="_blank" rel="noopener">Valuta il tuo usato →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAROSELLO LAVORI & ANNUNCI -->
+    <section id="lavori-vetrina" class="carousel-band">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lavori eseguiti e prodotti in vetrina</h2>
+                <p>Alcuni interventi dal laboratorio e dispositivi selezionati disponibili.</p>
+            </div>
+
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <p style="color: var(--text-muted);">Caricamento vetrina...</p>
+                </div>
+                <div class="carousel-controls">
+                    <button type="button" class="carousel-btn" id="prevSlide" aria-label="Scorri a sinistra">←</button>
+                    <button type="button" class="carousel-btn" id="nextSlide" aria-label="Scorri a destra">→</button>
                 </div>
             </div>
         </div>
@@ -652,6 +793,58 @@
             const url = `https://wa.me/393505911718?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank', 'noopener');
         }
+
+        function escapeHtml(str) {
+            return String(str || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        async function caricaLavori() {
+            const track = document.getElementById('carouselTrack');
+            try {
+                const res = await fetch('lavori.json?v=' + Date.now());
+                if (!res.ok) throw new Error('Errore caricamento lavori.json');
+                const items = await res.json();
+                if (!Array.isArray(items) || items.length === 0) {
+                    track.innerHTML = '<p style="color: var(--text-muted);">Nessun lavoro o annuncio al momento.</p>';
+                    return;
+                }
+                track.innerHTML = items.map(item => {
+                    const titolo = escapeHtml(item.titolo || 'Intervento MobiLab');
+                    const desc = escapeHtml(item.descrizione || '');
+                    const foto = escapeHtml(item.foto || 'moby.jpg');
+                    const link = escapeHtml(item.link || 'https://wa.me/393505911718');
+                    const btnText = escapeHtml(item.testo_bottone || 'Dettagli');
+                    return `
+                        <article class="lavoro-card">
+                            <div class="lavoro-img-box">
+                                <img src="${foto}" alt="${titolo}" onerror="this.onerror=null; this.src='moby.jpg';">
+                            </div>
+                            <div class="lavoro-body">
+                                <h3>${titolo}</h3>
+                                <p>${desc}</p>
+                                <a class="lavoro-btn" href="${link}" target="_blank" rel="noopener">${btnText}</a>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            } catch (_) {
+                track.innerHTML = '<p style="color: var(--text-muted);">Impossibile caricare la vetrina in questo momento.</p>';
+            }
+        }
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            document.getElementById('carouselTrack').scrollBy({ left: -340, behavior: 'smooth' });
+        });
+
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            document.getElementById('carouselTrack').scrollBy({ left: 340, behavior: 'smooth' });
+        });
+
+        caricaLavori();
     </script>
 </body>
 </html>
