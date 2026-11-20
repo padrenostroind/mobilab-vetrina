@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobiLab | Laboratorio Riparazioni &amp; Ricondizionati - Augusta</title>
-    <meta name="description" content="MobiLab Augusta: laboratorio riparazioni smartphone, PC, tablet e console. Dispositivi ricondizionati testati e vendita ricambi.">
+    <title>MobiLab | Riparazioni &amp; Ricondizionati</title>
+    <meta name="description" content="MobiLab: assistenza tecnica su smartphone, PC, tablet e console, dispositivi ricondizionati testati e annunci disponibili.">
     <style>
         :root {
             --bg: #070e15;
@@ -127,22 +127,6 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-        }
-
-        .loc-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--cyan);
-            background: rgba(6, 182, 212, 0.12);
-            border: 1px solid rgba(6, 182, 212, 0.35);
-            padding: 5px 12px;
-            border-radius: 999px;
-            margin-bottom: 16px;
         }
 
         .hero h1 {
@@ -273,7 +257,7 @@
             font-size: 0.95rem;
         }
 
-        /* CAROSELLO LAVORI & ANNUNCI */
+        /* CAROSELLO ANNUNCI DISPONIBILI */
         .carousel-band {
             background: var(--bg-alt);
             border-bottom: 1px solid var(--border);
@@ -590,7 +574,7 @@
         <div class="container nav-inner">
             <a href="#" class="brand">Mobi<em>Lab</em></a>
             <div class="nav-links">
-                <a href="#lavori-vetrina">Lavori &amp; Annunci</a>
+                <a href="#lavori-vetrina">Annunci disponibili</a>
                 <a href="#servizi">Servizi</a>
                 <a href="#metodo">Metodo</a>
                 <a href="#contatti">Preventivo</a>
@@ -605,14 +589,13 @@
     <header class="hero">
         <div class="container hero-grid">
             <div>
-                <div class="loc-badge">Augusta (SR) • Laboratorio &amp; Ricondizionati</div>
-                <h1>Riparazioni tecniche e <span>dispositivi ricondizionati</span> testati a banco.</h1>
+                <h1>Riparazioni tecniche e <span>dispositivi ricondizionati</span> testati.</h1>
                 <p>
-                    Interventi su smartphone, PC, tablet e console con ricambi selezionati, diagnosi chiara prima di procedere e vendita di usato controllato.
+                    Interventi su smartphone, PC, tablet e console con ricambi selezionati, stima chiara prima di procedere e vendita di usato controllato.
                 </p>
                 <div class="hero-cta">
                     <a class="btn-primary" href="#contatti">Richiedi un preventivo</a>
-                    <a class="btn-secondary" href="#lavori-vetrina">Guarda i lavori recenti</a>
+                    <a class="btn-secondary" href="#lavori-vetrina">Annunci disponibili</a>
                 </div>
             </div>
 
@@ -627,12 +610,12 @@
         </div>
     </header>
 
-    <!-- CAROSELLO LAVORI & ANNUNCI -->
+    <!-- ANNUNCI DISPONIBILI -->
     <section id="lavori-vetrina" class="carousel-band">
         <div class="container">
             <div class="section-header">
-                <h2>Dal banco di lavoro &amp; annunci disponibili</h2>
-                <p>Riparazioni reali eseguite in laboratorio e dispositivi pronti per la vendita.</p>
+                <h2>Annunci disponibili</h2>
+                <p>Dispositivi pronti e proposte selezionate in vetrina.</p>
             </div>
 
             <div class="carousel-track" id="carouselTrack">
@@ -745,7 +728,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p><strong>MobiLab</strong> — Augusta (SR) • Laboratorio Riparazioni, Ricondizionati &amp; Ricambi</p>
+            <p><strong>MobiLab</strong> — Riparazioni, Ricondizionati &amp; Ricambi</p>
             <p style="margin-top: 6px;">
                 WhatsApp: <a href="https://wa.me/393505911718" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 700;">350 591 1718</a> •
                 eBay: <a href="https://www.ebay.it/usr/mobilab-ita" target="_blank" rel="noopener" style="color: var(--cyan); font-weight: 700;">ebay.it/usr/mobilab-ita</a>
@@ -785,11 +768,11 @@
                 if (!res.ok) throw new Error('Errore caricamento lavori.json');
                 const items = await res.json();
                 if (!Array.isArray(items) || items.length === 0) {
-                    track.innerHTML = '<p style="color: var(--text-muted);">Nessun lavoro o annuncio al momento.</p>';
+                    track.innerHTML = '<p style="color: var(--text-muted);">Nessun annuncio al momento.</p>';
                     return;
                 }
                 track.innerHTML = items.map(item => {
-                    const titolo = escapeHtml(item.titolo || 'Intervento MobiLab');
+                    const titolo = escapeHtml(item.titolo || 'Annuncio MobiLab');
                     const desc = escapeHtml(item.descrizione || '');
                     const foto = escapeHtml(item.foto || 'moby.jpg');
                     const link = escapeHtml(item.link || 'https://wa.me/393505911718');
