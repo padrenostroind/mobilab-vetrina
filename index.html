@@ -7,19 +7,18 @@
     <meta name="description" content="MobiLab Augusta: laboratorio riparazioni smartphone, PC, tablet e console. Dispositivi ricondizionati testati e vendita ricambi.">
     <style>
         :root {
-            --bg: #0b0e13;
-            --bg-alt: #10151d;
-            --card: #151c26;
-            --card-hover: #1b2431;
-            --gold: #eab308;
-            --gold-soft: rgba(234, 179, 8, 0.14);
+            --bg: #070e15;
+            --bg-alt: #0c1722;
+            --card: #102030;
+            --card-hover: #15293d;
             --accent: #10b981;
             --accent-hover: #059669;
+            --cyan: #06b6d4;
             --ebay: #e53238;
             --ebay-hover: #c6242a;
-            --text: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border: #242e3d;
+            --text: #f0f7ff;
+            --text-muted: #8ca6be;
+            --border: #1d354d;
         }
 
         * {
@@ -31,7 +30,7 @@
         }
 
         body {
-            background-color: var(--bg);
+            background: radial-gradient(circle at top right, #0e253d 0%, var(--bg) 55%);
             color: var(--text);
             line-height: 1.55;
             overflow-x: hidden;
@@ -52,7 +51,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(11, 14, 19, 0.92);
+            background: rgba(7, 14, 21, 0.88);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
         }
@@ -67,44 +66,16 @@
         .brand {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
-            white-space: nowrap;
-        }
-
-        .brand-logo-wrap {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            border-radius: 10px;
-            overflow: hidden;
-            background: #ffffff;
-            border: 1.5px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .brand-logo-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .brand-name {
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0;
             letter-spacing: -0.03em;
+            white-space: nowrap;
             color: var(--text);
         }
 
-        .brand-name em {
+        .brand em {
             font-style: normal;
-            color: var(--gold);
+            color: var(--accent);
         }
 
         .nav-links {
@@ -116,7 +87,7 @@
             color: var(--text-muted);
         }
 
-        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover { color: var(--cyan); }
 
         .btn-nav-ebay {
             background: var(--card);
@@ -130,7 +101,7 @@
         }
 
         .btn-nav-ebay:hover {
-            border-color: var(--gold);
+            border-color: var(--cyan);
             background: var(--card-hover);
         }
 
@@ -142,12 +113,11 @@
         .hero {
             padding: 56px 0 50px;
             border-bottom: 1px solid var(--border);
-            background: linear-gradient(180deg, #101620 0%, var(--bg) 100%);
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.15fr 0.85fr;
             align-items: center;
             gap: 40px;
         }
@@ -167,11 +137,11 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            color: var(--gold);
-            background: var(--gold-soft);
-            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: var(--cyan);
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.35);
             padding: 5px 12px;
-            border-radius: 6px;
+            border-radius: 999px;
             margin-bottom: 16px;
         }
 
@@ -184,7 +154,9 @@
         }
 
         .hero h1 span {
-            color: var(--gold);
+            background: linear-gradient(90deg, var(--accent), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
@@ -209,8 +181,8 @@
         }
 
         .btn-primary {
-            background: var(--gold);
-            color: #0b0e13;
+            background: var(--accent);
+            color: #03150e;
             padding: 12px 20px;
             border-radius: 10px;
             font-weight: 800;
@@ -218,11 +190,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: transform 0.15s, filter 0.2s;
+            box-shadow: 0 8px 22px rgba(16, 185, 129, 0.25);
+            transition: transform 0.15s, background 0.2s;
         }
 
         .btn-primary:hover {
-            filter: brightness(1.08);
+            background: var(--accent-hover);
             transform: translateY(-1px);
         }
 
@@ -238,7 +211,7 @@
         }
 
         .btn-secondary:hover {
-            border-color: var(--gold);
+            border-color: var(--cyan);
             background: var(--card-hover);
         }
 
@@ -249,11 +222,12 @@
 
         .moby-showcase {
             width: 100%;
-            max-width: 310px;
-            background: var(--card);
+            max-width: 340px;
+            background: linear-gradient(145deg, #102438, #09131d);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 16px;
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(6, 182, 212, 0.14);
             text-align: center;
         }
 
@@ -268,12 +242,12 @@
         }
 
         .moby-caption {
-            font-size: 0.83rem;
+            font-size: 0.84rem;
             color: var(--text-muted);
         }
 
         .moby-caption strong {
-            color: var(--text);
+            color: var(--cyan);
         }
 
         /* SEZIONI GENERICHE */
@@ -332,17 +306,18 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
         .lavoro-card:hover {
-            border-color: var(--gold);
+            border-color: var(--cyan);
+            transform: translateY(-2px);
         }
 
         .lavoro-img-box {
             width: 100%;
             height: 195px;
-            background: #080b10;
+            background: #08121c;
             overflow: hidden;
         }
 
@@ -379,17 +354,17 @@
             justify-content: center;
             padding: 9px 14px;
             border-radius: 8px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text);
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: var(--accent);
             font-weight: 700;
             font-size: 0.85rem;
-            transition: border-color 0.2s, background 0.2s;
+            transition: background 0.2s, color 0.2s;
         }
 
         .lavoro-btn:hover {
-            border-color: var(--gold);
-            background: var(--card-hover);
+            background: var(--accent);
+            color: #03150e;
         }
 
         .carousel-controls {
@@ -412,10 +387,11 @@
         }
 
         .carousel-btn:hover {
-            border-color: var(--gold);
+            border-color: var(--cyan);
+            background: var(--card-hover);
         }
 
-        /* GRIGLIA SERVIZI (PULITA, SENZA LINK RIPETITIVI) */
+        /* GRIGLIA SERVIZI */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -430,6 +406,12 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .service-card:hover {
+            border-color: var(--cyan);
+            background: var(--card-hover);
         }
 
         .service-tag {
@@ -437,7 +419,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.6px;
-            color: var(--gold);
+            color: var(--cyan);
         }
 
         .service-card h3 {
@@ -450,7 +432,7 @@
             color: var(--text-muted);
         }
 
-        /* METODO DI LAVORO */
+        /* METODO */
         .trust-band {
             background: var(--bg-alt);
             border-top: 1px solid var(--border);
@@ -478,7 +460,7 @@
         }
 
         .trust-item span {
-            color: var(--gold);
+            color: var(--cyan);
             margin-right: 6px;
         }
 
@@ -489,7 +471,7 @@
 
         /* PREVENTIVO RAPIDO */
         .quote-box {
-            background: var(--card);
+            background: linear-gradient(135deg, #102336, #0b1826);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 30px;
@@ -515,7 +497,7 @@
             padding: 12px 14px;
             border-radius: 9px;
             border: 1px solid var(--border);
-            background: var(--bg);
+            background: #071019;
             color: var(--text);
             font-size: 0.93rem;
         }
@@ -524,7 +506,7 @@
         .quote-form input:focus,
         .quote-form textarea:focus {
             outline: none;
-            border-color: var(--gold);
+            border-color: var(--cyan);
         }
 
         .full-col { grid-column: 1 / -1; }
@@ -579,7 +561,7 @@
 
         footer strong { color: var(--text); }
 
-        /* PULSANTE FLOTTANTE WHATSAPP DISCRETO */
+        /* PULSANTE FLOTTANTE WHATSAPP */
         .wa-float {
             position: fixed;
             bottom: 20px;
@@ -606,12 +588,7 @@
     <!-- NAVBAR -->
     <nav>
         <div class="container nav-inner">
-            <a href="#" class="brand">
-                <span class="brand-logo-wrap">
-                    <img src="moby.jpg" onerror="this.onerror=null; this.src='moby.png';" alt="MobiLab">
-                </span>
-                <span class="brand-name">Mobi<em>Lab</em></span>
-            </a>
+            <a href="#" class="brand">Mobi<em>Lab</em></a>
             <div class="nav-links">
                 <a href="#lavori-vetrina">Lavori &amp; Annunci</a>
                 <a href="#servizi">Servizi</a>
@@ -641,16 +618,16 @@
 
             <div class="hero-visual">
                 <div class="moby-showcase">
-                    <img src="moby.jpg" onerror="this.onerror=null; this.src='moby.png';" alt="Moby - MobiLab">
+                    <img src="moby.jpg" onerror="this.onerror=null; this.src='moby.png';" alt="Moby - Mascotte MobiLab">
                     <div class="moby-caption">
-                        <strong>MobiLab</strong> • Riparazione hardware, ricondizionati e ricambi.
+                        <strong>Moby</strong> • Diagnosi accurata, ricambi selezionati e ricondizionati testati.
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- CAROSELLO LAVORI & ANNUNCI (IN ALTO, SUBITO VISIBILE) -->
+    <!-- CAROSELLO LAVORI & ANNUNCI -->
     <section id="lavori-vetrina" class="carousel-band">
         <div class="container">
             <div class="section-header">
@@ -770,8 +747,8 @@
         <div class="container">
             <p><strong>MobiLab</strong> — Augusta (SR) • Laboratorio Riparazioni, Ricondizionati &amp; Ricambi</p>
             <p style="margin-top: 6px;">
-                WhatsApp: <a href="https://wa.me/393505911718" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 700;">350 591 1718</a> •
-                eBay: <a href="https://www.ebay.it/usr/mobilab-ita" target="_blank" rel="noopener" style="color: var(--text); font-weight: 700;">ebay.it/usr/mobilab-ita</a>
+                WhatsApp: <a href="https://wa.me/393505911718" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 700;">350 591 1718</a> •
+                eBay: <a href="https://www.ebay.it/usr/mobilab-ita" target="_blank" rel="noopener" style="color: var(--cyan); font-weight: 700;">ebay.it/usr/mobilab-ita</a>
             </p>
         </div>
     </footer>
